@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&family=Montserrat:wght@400;800&family=Ubuntu&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+.container {
+  margin: 30px auto 200px;
+  max-width: 1340px;
+}
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-family: "Montserrat", sans-serif;
+  overflow-wrap: break-word;
+}
+ol,
+ul {
+  list-style: none;
+}
+a {
+  color: #1b1b1b;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 66px;
+}
+h2 {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 46px;
+  letter-spacing: 0em;
+}
+h3 {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30px;
+  letter-spacing: 0em;
+}
+p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+}
+blockquote footer {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+}
+.button {
+  cursor: pointer;
+  padding: 10px 50px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #fff;
+  background-color: #1b1b1b;
+  border: none;
+}
+.subscribe-button {
+  border: none;
+  color: #fefefe;
+  background-color: #3657d3;
+}
+.subscribe-button:hover {
+  outline: 1px solid #3657d3;
+  background-color: transparent;
+}
+input {
+  color: #8d959c;
+  background-color: transparent;
+  outline: none;
+  border-width: 0 0 1px;
+  width: 353px;
+  caret-color: #3657d3;
+}
+input:focus {
+  border-color: #3657d3;
+  color: #3657d3;
+}
+input::placeholder {
+  font-size: 18px;
+  line-height: 26px;
+}
+input:focus::placeholder {
+  font-size: 0;
+}
+input:not(:focus):not(:placeholder-shown) {
+  color: #fefefe;
+  border-color: #fefefe;
+}
+@media (max-width: 1480px) {
+  input {
+    width: min-content;
+  }
+}
+@media (max-width: 1240px) {
+  .container {
+    margin: 30px auto 40px;
+  }
+}
+
+@media (max-width: 660px) {
+  .subscribe {
+    justify-content: center;
+  }
+  .subscribe .subscribe__form {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .container {
+    margin: 10px auto 20px;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 36px;
+  }
+  h2 {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 28px;
+    letter-spacing: 0em;
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 20px;
+    letter-spacing: 0em;
+  }
+  p {
+    font-size: 14px;
+    line-height: 20px;
+    line-height: 18px;
+  }
+}
