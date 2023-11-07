@@ -1,10 +1,10 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { article, articleMeta, articleBody } from '~/types/article'
+import type { article, meta, articleBody } from '~/types/article'
 
 export const useArticleStore = defineStore('article', () => {
   const article = ref<article>()
-  const articleMeta = ref<articleMeta>()
+  const articleMeta = ref<meta>()
   const articleBody = ref<articleBody>()
 
   const fetchArticle = async (slug:string) => {

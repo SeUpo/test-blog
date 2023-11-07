@@ -12,7 +12,7 @@
 import { useArticleStore } from "~/stores/article";
 const store = useArticleStore();
 const { fetchArticle } = store;
-const { articleMeta, articleBody } = storeToRefs(store);
+const { articleBody } = storeToRefs(store);
 import type { renderBlockType } from "~/types/article";
 
 const route = useRoute();
@@ -26,23 +26,6 @@ watch(
   },
   { immediate: true }
 );
-
-const title = ref("");
-const description = ref("");
-
-watch(articleMeta, (newMeta) => {
-  if (newMeta) {
-    title.value = newMeta.title as string;
-    description.value = newMeta.description as string;
-  }
-});
-
-useHead({
-  title: title,
-});
-useSeoMeta({
-  description: () => `${description.value}`,
-});
 
 const renderBlock: renderBlockType = {
     article_intro_block: defineAsyncComponent(() => import('../components/ArticleIntro.vue')),

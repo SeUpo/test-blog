@@ -1,32 +1,77 @@
 <template lang="pug">
-div
-  header
-    NuxtLink(to='/')
-      img(src='~/assets/icons/Logo.svg')
+header
+  NuxtLink(to='/')
+    img(src='~/assets/icons/Logo.svg')
+main
   slot
-  hr
-  footer
-    .info
-      .info__introduct
-        NuxtLink(to='/')
-          img.info__introduct-logo(src='~/assets/icons/Logo.svg')
-        p.info__introduct-introduction
-          | Cтатьи о дизайне и искусстве, которые исследуют
-          | творческие вдохновения и актуальные тенденции,
-          | раскрывая мир эстетики и креативности
-      .info__contacts
-        p.info__contacts-title email
-        h2.info__email testblogsupport@gmail.com
-        .info__links
-          img(src='~/assets/icons/vk.svg')
-          img(src='~/assets/icons/fb.svg')
-          img(src='~/assets/icons/inst.svg')
-          img(src='~/assets/icons/teleg.svg')
-    SubscribeForm
+hr
+footer
+  .info
+    .info__introduct
+      NuxtLink(to='/')
+        img.info__introduct-logo(src='~/assets/icons/Logo.svg')
+      p.info__introduct-introduction
+        | Cтатьи о дизайне и искусстве, которые исследуют
+        | творческие вдохновения и актуальные тенденции,
+        | раскрывая мир эстетики и креативности
+    .info__contacts
+      p.info__contacts-title email
+      h2.info__email testblogsupport@gmail.com
+      .info__links
+        img(src='~/assets/icons/vk.svg')
+        img(src='~/assets/icons/fb.svg')
+        img(src='~/assets/icons/inst.svg')
+        img(src='~/assets/icons/teleg.svg')
+  SubscribeForm
 </template>
 
 <script setup lang="ts">
 import SubscribeForm from "~/components/ArticleSubscribeForm.vue";
+import type { meta } from '~/types/article'
+
+const route = useRoute();
+const slug = ref();
+
+onMounted(() => {
+  slug.value = route.params.slug;
+  slug.value == undefined ? fetchMeta('') : fetchMeta(slug.value);
+});
+
+watch(
+  () => route.params.slug,
+  (newSlug) => {
+    newSlug == undefined ? slug.value = '' : slug.value = newSlug;
+    fetchMeta(slug.value);
+  },
+);
+
+const metaInfo = ref<meta>()
+const title = ref("");
+const description = ref("");
+
+const fetchMeta = async (slug:string) => {
+    try {
+      const res = await fetch(`https://devtwit8.ru/api/v1/page/?path=/${slug}`)
+      if (res.ok) {
+        const body =  ref();
+        body.value = await res.json();
+        metaInfo.value = body.value!.meta;
+        title.value = metaInfo.value!.title;
+        description.value = metaInfo.value!.description;
+      }
+    } 
+    catch (err) {
+        console.error('err', err)
+    }
+  }
+
+useHead({
+  title,
+  meta: [{
+    name: 'description',
+    content: description
+  }]
+});
 </script>
 
 <style lang="scss" scoped>

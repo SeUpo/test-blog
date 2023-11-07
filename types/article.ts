@@ -14,11 +14,11 @@ export type articleListBlock = {
 }
 
 export type article = {
-    meta: articleMeta;
+    meta: meta;
     body: articleBody;
 }
 
-export type articleMeta = {
+export type meta = {
     description: string;
     slug: string;
     title: string;

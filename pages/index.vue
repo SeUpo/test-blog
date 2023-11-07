@@ -16,10 +16,6 @@ const { articles } = storeToRefs(store);
 onMounted(() => {
   getHome();
 });
-
-useHead({
-  title: "Home",
-});
 </script>
 
 <style lang="scss" scoped>
